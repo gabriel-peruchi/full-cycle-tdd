@@ -3,6 +3,7 @@ import { Booking } from "./booking";
 
 export class Property {
   private readonly bookings: Booking[] = [];
+  
   constructor(
     private id: string,
     private name: string,
@@ -10,11 +11,17 @@ export class Property {
     private maxGuests: number,
     private basePricePerNight: number
   ) {
+    if (!id) {
+      throw new Error("O ID é obrigatório");
+    }
     if (!name) {
       throw new Error("O nome é obrigatório");
     }
-    if (maxGuests <= 0) {
+    if (!maxGuests || maxGuests <= 0) {
       throw new Error("O número máximo de hóspedes deve ser maior que zero");
+    }
+    if (!basePricePerNight || basePricePerNight <= 0) {
+      throw new Error("O preço base por noite deve ser maior que zero");
     }
     this.id = id;
     this.name = name;
