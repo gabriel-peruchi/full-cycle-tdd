@@ -47,10 +47,16 @@ describe('PropertyMapper', () => {
     propertyEntity4.description = "Uma casa linda na praia"
     propertyEntity4.maxGuests = 10
 
+    const propertyEntity5 = new PropertyEntity()
+    propertyEntity5.id = "5"
+    propertyEntity5.name = "Casa de Praia"
+    propertyEntity5.maxGuests = 10
+
     expect(() => PropertyMapper.toDomain(propertyEntity1)).toThrow('O ID é obrigatório')
     expect(() => PropertyMapper.toDomain(propertyEntity2)).toThrow('O nome é obrigatório')
-    expect(() => PropertyMapper.toDomain(propertyEntity3)).toThrow('O número máximo de hóspedes deve ser maior que zero')
-    expect(() => PropertyMapper.toDomain(propertyEntity4)).toThrow('O preço base por noite deve ser maior que zero')
+    expect(() => PropertyMapper.toDomain(propertyEntity3)).toThrow('O número máximo de hóspedes é obrigatório')
+    expect(() => PropertyMapper.toDomain(propertyEntity4)).toThrow('O preço base por noite é obrigatório')
+    expect(() => PropertyMapper.toDomain(propertyEntity5)).toThrow('A descrição é obrigatória')
   })
 
   it("deve converter Property para PropertyEntity corretamente", () => {
