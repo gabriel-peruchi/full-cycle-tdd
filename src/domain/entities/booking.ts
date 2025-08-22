@@ -24,6 +24,7 @@ export class Booking {
     if (guestCount <= 0) {
       throw new Error("O número de hóspedes deve ser maior que zero.");
     }
+    
     property.validateGuestCount(guestCount);
 
     if (!property.isAvailable(dateRange)) {
